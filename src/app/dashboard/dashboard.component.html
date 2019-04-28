@@ -1,0 +1,47 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="background-color: magenta; color: white; width:100%;height:100%; display:flex; flex-direction:column; align-content: center">
+  <!-- w<sc-fit-window #fw> -->
+    <div name="TopMenu"
+      style="background-color:slategray; width:100%;display:flex; flex-direction:row;justify-content: center;">
+      <!-- <sc-top-nav></sc-top-nav> -->
+    </div>
+    <div name="wrapper" style="background-color:lightgray; width:100%; height: 100%;  display:flex;flex-direction: row">
+      <div name="leftNav" style="width: auto; display:inline-block;flex-direction: row">
+        <!-- <sc-left-nav [liftedStateSectionItems]="state.slice('sectionItems')" [liftedStateItems]="state.slice('items')"
+          [liftedStateHeight]="fw.state.slice('height')">
+        </sc-left-nav> -->
+      </div>
+      <div name="contentarea"
+        style="background-color:black; width:100%;height:100%;display: flex; justify-content: center; margin: 0 auto">
+        <div id="flex-column-container">
+          <div class="flex-item">
+            <app-pull-request-count></app-pull-request-count>
+          </div>
+
+          <div class="flex-item">
+            <div id="flex-row-container">
+              <div class="flex-item">
+                <app-top-developers></app-top-developers>
+              </div>
+              <div class="flex-item">
+                <app-top-repository></app-top-repository>
+              </div>
+              <div class="flex-item">
+                <!-- <div class="parent" [@slide]="activePane">
+                  <ng-content select="[leftPane]"> -->
+                    <app-dev-pull-details></app-dev-pull-details>
+                  <!-- </ng-content>
+                  <ng-content select="[rightPane]"></ng-content> -->
+                </div>
+              </div>
+            </div>
+          </div>
+      </div> <!-- Content Area-->
+      <!--router-outlet></router-outlet-->
+    </div> <!-- wrapper-->
+  <!-- </sc-fit-window> -->
+  <!-- <div name="Footer"
+    style="background-color: grey; width:100%;height:50px;display:flex; flex-direction:row;justify-content: center; vertical-align:autoks">
+    Footer
+  </div> -->
+</div>

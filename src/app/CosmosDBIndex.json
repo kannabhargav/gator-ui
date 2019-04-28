@@ -1,0 +1,81 @@
+{
+    "indexingMode": "consistent",
+    "automatic": true,
+    "includedPaths": [
+        {
+            "path": "/",
+            "indexes": [
+                {
+                    "kind": "Range",
+                    "dataType": "String",
+                    "precision": -1
+                }
+            ]
+        },
+        {
+            "path": "/sender/login/?",
+            "indexes": [
+                {
+                    "kind": "Range",
+                    "dataType": "String",
+                    "precision": -1
+                }
+            ]
+        },
+        {
+            "path": "/repository/name/?",
+            "indexes": [
+                {
+                    "kind": "Range",
+                    "dataType": "String",
+                    "precision": -1
+                }
+            ]
+        },
+        {
+            "path": "/pull_request/created_at/?",
+            "indexes": [
+                {
+                    "kind": "Range",
+                    "dataType": "String",
+                    "precision": -1
+                }
+            ]
+        },
+        {
+            "path": "/pull_request/updated_at/?",
+            "indexes": [
+                {
+                    "kind": "Range",
+                    "dataType": "String",
+                    "precision": -1
+                }
+            ]
+        },
+        {
+            "path": "/pull_request/user/type/?",
+            "indexes": [
+                {
+                    "kind": "Range",
+                    "dataType": "String",
+                    "precision": -1
+                }
+            ]
+        },
+        {
+            "path": "/action/?",
+            "indexes": [
+                {
+                    "kind": "Range",
+                    "dataType": "String",
+                    "precision": -1
+                }
+            ]
+        }
+    ],
+    "excludedPaths": [
+        {
+            "path": "/\"_etag\"/?"
+        }
+    ]
+}

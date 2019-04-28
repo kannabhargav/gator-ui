@@ -1,0 +1,7 @@
+{
+    "appService.zipIgnorePattern": [
+        ".vscode{,/**}"
+    ],
+    "appService.deploySubpath": "",
+    "appService.defaultWebAppToDeploy": "/subscriptions/a3c4d3be-228e-4104-9b09-464352f7a115/resourceGroups/appsvc_rg_linux_centralus/providers/Microsoft.Web/sites/gatorui"
+}

@@ -1,0 +1,15 @@
+<div id="flex-container">
+  <div div class="flex-item" style="font-size: 25px; color:white"> Top Active Developers </div>
+  <div *ngFor="let dev of developers;  let i = index">
+    <a href="#" style="text-decoration:none;">
+      <div div class="flex-item" (click)="data(dev)" style="vertical-align:center; align-content: flex-end">
+        <div style="display: flex; direction: row">
+          <img src="{{avatar[i]}}" style="height:30px; width:30px; margin: 2px" />
+          {{dev}}
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+
+
