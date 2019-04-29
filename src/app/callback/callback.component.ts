@@ -16,19 +16,13 @@ export class CallbackComponent implements OnInit {
       if (token) {
         this.gitService.token = token;
         this.storage.set ('token', token);
-        this.router.navigate (['/dashboard']) ;
+        this.router.navigate (['/status']) ;
       }
     });
    }
 
   ngOnInit() {
-    this.activatedRoute.queryParams.subscribe(params => {
-      const token = params['token'];
-      if (token) {
-        this.gitService.token = token;
-        this.router.navigate (['/dashboard']) ;
-      }
-    });
+    
   }
 
 }

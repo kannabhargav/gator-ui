@@ -1,16 +1,19 @@
 import {Injectable, Input, Inject} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, of, Subject} from 'rxjs';
-import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service'
+import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
-
 export class GitService {
   httpOptions: any;
   query: string;
   token: string;
+  tenant: string;
+  org: string;
+
   private gitUrl: string = 'http://localhost:3000/service/'; //'https://gator-be.azurewebsites.net/service/'; //'http://localhost:3000/service/';
 
   //Components listen to each other using this
@@ -27,13 +30,21 @@ export class GitService {
     this._onMyEvent.next(value);
   }
 
-  constructor(private http: HttpClient,  @Inject(LOCAL_STORAGE) private storage: WebStorageService) {
-    console.log ('gitservice is created');
+  constructor(private http: HttpClient, @Inject(LOCAL_STORAGE) private storage: WebStorageService, private router: Router) {
+    console.log('gitservice is created');
+  }
+
+  GetHookStatus(org: string): any {
+    this.AttachToken();
+    const q = `GetHookStatus?tenant=${this.tenant}&org=${org}`;
+
+    return this.http.get(this.gitUrl + q, this.httpOptions);
   }
 
   AttachToken() {
     if (!this.token) {
-      this.token = this.storage.get ('token') ;
+      this.token = this.storage.get('token');
+      this.tenant = this.token; //Today token and tenant is same
     }
 
     try {
@@ -43,7 +54,6 @@ export class GitService {
           headers: new HttpHeaders({
             'X-GitHub-Delivery': 'xxx',
             'X-Hub-Signature': 'xxx',
-            'Accept-Encoding': 'gzip, deflate, br',
             'X-GitHub-Event': 'xxx',
             Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
             'Content-Type': 'text/html; charset=utf-8',
