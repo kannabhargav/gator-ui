@@ -37,7 +37,31 @@ export class GitService {
   GetHookStatus(org: string): any {
     this.AttachToken();
     const q = `GetHookStatus?tenant=${this.tenant}&org=${org}`;
+    return this.http.get(this.gitUrl + q, this.httpOptions);
+  }
 
+
+  SetupWebHook(org: string): any {
+    this.AttachToken();
+    const q = `SetupWebHook?tenant=${this.tenant}&org=${org}`;
+    return this.http.get(this.gitUrl + q, this.httpOptions);
+  }
+
+  GetOrgList(): any {
+    this.AttachToken();
+    const q = `GetOrg?tenant=${this.tenant}`;
+    return this.http.get(this.gitUrl + q, this.httpOptions);
+  }
+
+  GetRepoList(org: string): any {
+    this.AttachToken();
+    const q = `GetRepos?tenant=${this.tenant}&org=${org}&bustTheCache=false&getFromGit=false`;
+    return this.http.get(this.gitUrl + q, this.httpOptions);
+  }
+
+  GetPullRequest(org: string): any {
+    this.AttachToken();
+    const q = `GetPRfromGit?tenant=${this.tenant}&org=${org}`;
     return this.http.get(this.gitUrl + q, this.httpOptions);
   }
 

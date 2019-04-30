@@ -1,7 +1,26 @@
 <div class="Aligner">
-  <div *ngIf="true" style=color:lightgreen>Git Hook is installed: {{hookStatus}}</div>
+
+  <div *ngIf="orgStatus" style=color:lightgreen>Getting organization list ... Done!
+    <div *ngFor= "let org of orgList">
+       <div> {{org.Org}}</div>
+    </div>
+  
+  </div>
   <p></p>
-  <div *ngIf="false" style="color:red">Git Hook is installed: {{hookStatus}}</div>
+  <div *ngIf="!orgStatus" style="color:red">Error in getting organization list!</div>
+
+  <div *ngIf="repoStatus" style=color:lightgreen>Getting repo list ... Done!</div>
+  <p></p>
+  <div *ngIf="!repoStatus" style="color:red">Error in getting repo list!</div>
+  
+  <div *ngIf="prStatus" style=color:lightgreen>Getting pull request  ... Done!</div>
+  <p></p>
+  <div *ngIf="!prStatus" style="color:red">Error in getting pull request!</div>
+
+  <div *ngIf="hookStatus" style=color:lightgreen>Git Hook is installed: {{hookStatus}}</div>
+  <p></p>
+  <div *ngIf="!hookStatus" style="color:red">Git Hook is installed: {{hookStatus}}</div>
+  <p></p>
     <div class="Aligner-item Aligner-item--fixed"> 
         <Button (click) = "dashboard()" class="buttonstyle"> Get Started  </Button>
     </div>
