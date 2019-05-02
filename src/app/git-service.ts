@@ -103,16 +103,16 @@ export class GitService {
   }
 
   // GetTopRepositories for last 7 days, 30 days etc
-  GetTopRepositories(tenant: string, day: number = 7): Observable<any> {
+  GetTopRepositories(org: string, day: number = 7): Observable<any> {
     this.AttachToken();
     // tslint:disable-next-line: max-line-length
-    const q = `GetTopRespositories4XDays?tenant=${tenant}&day=${day}`;
+    const q = `GetTopRespositories4XDays?org=${org}&day=${day}`;
     return this.http.get(this.gitUrl + q, this.httpOptions);
   }
 
-  GetTopDevelopers(tenant: string, day: number): Observable<any> {
+  GetTopDevelopers(org: string, day: number): Observable<any> {
     this.AttachToken();
-    const q = `TopDevForLastXDays?tenant=${tenant}&day=${day}`;
+    const q = `TopDevForLastXDays?org=${org}&day=${day}`;
     return this.http.get(this.gitUrl + q, this.httpOptions);
   }
 

@@ -16,7 +16,7 @@ export class TopRepositoryComponent implements OnInit {
   ngOnInit() {
     this.gitService.GetTopRepositories("LabShare", 7).subscribe(val => {
       // Filter out the duplicates
-      this.repositories = val.map(item => item.Repo_Name).filter((value, index, self) => self.indexOf(value) === index);
+      this.repositories = val.map(item => item.Repo).filter((value, index, self) => self.indexOf(value) === index);
     });
   }
 }
