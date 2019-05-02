@@ -28,8 +28,10 @@ export class TopDevelopersComponent implements OnInit {
     this.gitService.trigger(developer);
     // this.messageEvent.emit (developer); Didn't work! Investigate
   }
+  
   ngOnInit() {
     this.gitService.GetTopDevelopers("LabShare", 7).subscribe(val => {
+
       const devs = val.map(item => item.login + '--' + item.Avatar_Url).filter((value, index, self) => self.indexOf(value) === index);
     
       devs.map(item => {

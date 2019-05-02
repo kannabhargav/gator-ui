@@ -1,12 +1,13 @@
 <div id="flex-container-Title">
   <div class="flex-item" style=" font-size: 35px;">
-    <div style="font-size: 25px; color:white">Today's </div>
+    <div style="font-size: 25px; color:white">Today's</div>
     <div id="flex-container-Number">
       <div class="flex-item-number" style=" font-size: 35px; color:whitesmoke">
-        <a href="#" style="text-decoration:none;" (click)="data('opened', 1)" > <div style=" font-size: 35px; color: orangered; margin-right: 5px"  >
-          {{todayCount}} </div></a>
+        <div (click)="data('opened', 1)" style=" font-size: 35px; color: orangered; margin-right: 5px; cursor: pointer;">
+          {{ todayCount }}
+        </div>
         -
-        <a href="#" style="text-decoration:none;" (click)="data('closed', 1)" ><div style=" font-size: 35px; color: greenyellow;margin-left: 5px"> {{todayCloseCount}} </div></a>
+        <div (click)="data('closed', 1)" style=" font-size: 35px; color: greenyellow;margin-left: 5px; cursor: pointer;">{{ todayCloseCount }}</div>
       </div>
     </div>
   </div>
@@ -14,9 +15,11 @@
     <div style="font-size: 25px; color:white">Last 7 days</div>
     <div id="flex-container-Number">
       <div class="flex-item-number" style=" font-size: 35px; color:whitesmoke">
-        <a href="#" style="text-decoration:none;" (click)="data('opened', 7)" ><div style=" font-size: 35px; color: orangered; margin-right: 5px">{{weekCount}}</div></a>
+   
+          <div  (click)="data('opened', 7)" style=" font-size: 35px; color: orangered; margin-right: 5px ; cursor: pointer;">{{ weekCount }}</div>
         -
-        <a href="#" style="text-decoration:none;" (click)="data('closed', 7)"> <div style=" font-size: 35px; color: greenyellow;margin-left: 5px"> {{weekCloseCount}} </div></a>
+       
+          <div  (click)="data('closed', 7)" style=" font-size: 35px; color: greenyellow;margin-left: 5px ; cursor: pointer;">{{ weekCloseCount }}</div>
       </div>
     </div>
   </div>
@@ -24,9 +27,11 @@
     <div style="font-size: 25px; color:white">Last 30 Days</div>
     <div id="flex-container-Number">
       <div class="flex-item-number" style=" font-size: 35px; color:whitesmoke">
-        <a href="#" style="text-decoration:none;" (click)="data('opened', 30)" > <div style=" font-size: 35px; color: orangered; margin-right: 5px"> {{count}}</div></a>
+
+          <div (click)="data('opened', 30)" style=" font-size: 35px; color: orangered; margin-right: 5px; cursor: pointer;">{{ count }}</div>
         -
-        <a href="#" style="text-decoration:none;" (click)="data('closed', 30)" ><div style=" font-size: 35px; color: greenyellow;margin-left: 5px"> {{closeCount}}</div></a>
+       <div (click)="data('closed', 30)" style=" font-size: 35px; color: greenyellow;margin-left: 5px; cursor: pointer;">{{ closeCount }}</div>
+        
       </div>
     </div>
   </div>
