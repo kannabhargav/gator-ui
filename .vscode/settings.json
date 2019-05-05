@@ -3,5 +3,5 @@
         ".vscode{,/**}"
     ],
     "appService.deploySubpath": "",
-    "appService.defaultWebAppToDeploy": "/subscriptions/a3c4d3be-228e-4104-9b09-464352f7a115/resourceGroups/appsvc_rg_linux_centralus/providers/Microsoft.Web/sites/gatorui"
+    "appService.defaultWebAppToDeploy": "/subscriptions/b44ab592-ac83-4c30-a162-fdde55233080/resourceGroups/GatorServices/providers/Microsoft.Web/sites/gator-ui"
 }

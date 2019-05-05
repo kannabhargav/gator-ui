@@ -14,35 +14,37 @@ export class StatusComponent implements OnInit {
   orgList: any;
 
   constructor(private gitService: GitService, private router: Router) {
-    this.gitService.GetHookStatus('LabShare').subscribe(result => {
-      this.hookStatus = result.val;
-      if (!this.hookStatus) {
-        //lets install the hook
-        this.gitService.SetupWebHook('LabShare').subscribe(result => {
-          this.hookStatus = result.val;
-        });
-      }
-    });
     //Get Org Details
     this.gitService.GetOrgList().subscribe(result => {
       if (result.length > 0) {
         this.orgStatus = true;
         this.orgList = result;
-      }
-    });
-    //Get Repos
-    this.gitService.GetRepoList('LabShare').subscribe(result => {
-      //TODO: Turn the result into true and false
-      if (result.length > 0) {
-        this.repoStatus = true;
-      }
-     
-    });
+        this.gitService.currentOrg = this.orgList[0].Org ;
 
-    //Get Pull Request
-    this.gitService.GetPullRequest('LabShare').subscribe(result => {
-      //TODO: Turn the result into true and false
-      this.prStatus = result.val;
+        this.orgList.forEach(element => {
+          this.gitService.GetHookStatus(element.Org).subscribe(result => {
+            this.hookStatus = result.val;
+            if (!this.hookStatus) {
+              //lets install the hook
+              this.gitService.SetupWebHook(element.Org).subscribe(result => {
+                this.hookStatus = result.val;
+              });
+            }
+          });
+          //Get Repos
+          this.gitService.GetRepoList(element.Org).subscribe(result => {
+            //TODO: Turn the result into true and false
+            if (result.length > 0) {
+              this.repoStatus = true;
+            }
+          });
+          //Get Pull Request
+          this.gitService.GetPullRequest(element.Org).subscribe(result => {
+            //TODO: Turn the result into true and false
+            this.prStatus = result.val;
+          });
+        });
+      }
     });
   }
 

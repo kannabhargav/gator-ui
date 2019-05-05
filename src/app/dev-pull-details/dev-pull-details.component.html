@@ -1,14 +1,13 @@
-<div id="flex-container" >
-
-  <a href="https://github.com/{{devDetails[0].login}}" target="_blank" style="text-decoration: none;">
-    <div div class="flex-item" style="font-size: 25px; color:white"> {{devDetails[0].login}}</div>
+<div id="flex-container">
+  <a href="https://github.com/{{ devDetails[0].login }}" target="_blank" style="text-decoration: none;">
+    <div div class="flex-item" style=" color:white">{{ devDetails[0].login }}</div>
   </a>
-  <div *ngFor="let dev of devDetails;  let i = index" style="margin-bottom:25px" class="flex-item" >
-    <div style="font-size: 14px; color:greenyellow">{{dev.Login}} </div> <div style="font-size: 14px">{{dev.Action}}: {{dev.Repo_Name}} </div>
-    <div style="font-size: 15px; color: honeydew "> {{dev.title}}</div>
-    <div style="font-size: 12px; color: white"> {{dev.body}} </div>
-    <div style="font-size: 12px; color: white">  <a href="{{dev.pullrequesturl}}" target="_blank" style="text-decoration: none; color: hotpink"> ...more  </a> </div>
-    <div style="font-size: 10px; color: grey"> {{dev.created_at}} </div>
- 
+  <div *ngFor="let dev of devDetails; let i = index" style="margin-bottom:25px" class="flex-item">
+    <div style="font-size: large; color:greenyellow">{{ dev.Login }}</div>
+    <div style="font-size: large; color:rgb(212, 212, 73)">{{ dev.State }}: {{ dev.Repo }}</div>
+    <div style="font-size: large; color: honeydew ">{{ dev.title }}</div>
+    <div style="font-size: large; color: white">{{ dev.body }}</div>
+    <div style="font-size: large; color: white"><a href="{{ dev.pullrequesturl }}" target="_blank" style="text-decoration: none; color: hotpink"> ...more </a></div>
+    <div style="font-size: small; color: rgb(133, 190, 207)">{{ dev.created_at }}</div>
   </div>
 </div>

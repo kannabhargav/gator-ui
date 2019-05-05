@@ -10,6 +10,8 @@ export const STATE = () => ({
   sectionItems: [{name: 'Team'}, {name: 'Repositories'}, {name: 'Developers'}],
 });
 type PaneType = 'left' | 'right';
+
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -23,8 +25,9 @@ type PaneType = 'left' | 'right';
 })
 export class DashboardComponent implements OnInit {
 
+  orgs: any;
   constructor() { 
- 
+    
   }
 
   ngOnInit() {

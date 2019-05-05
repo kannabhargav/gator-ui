@@ -20,7 +20,8 @@ import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { CallbackComponent } from './callback/callback.component';
 import {GitService} from './git-service';
 import { LOCAL_STORAGE, StorageServiceModule } from 'angular-webstorage-service';
-import { StatusComponent } from './status/status.component'
+import { StatusComponent } from './status/status.component';
+import { OrgListComponent } from './org-list/org-list.component'
 
 const routes: Routes = [
   {path: 'login', component:LoginComponent},
@@ -29,7 +30,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, PullRequestCountComponent, TopRepositoryComponent, TopDevelopersComponent, DevPullDetailsComponent, LoginComponent, DashboardComponent, CallbackComponent, StatusComponent],
+  declarations: [AppComponent, PullRequestCountComponent, TopRepositoryComponent, TopDevelopersComponent, DevPullDetailsComponent, LoginComponent, DashboardComponent, CallbackComponent, StatusComponent, OrgListComponent],
   imports: [BrowserModule,RouterModule.forRoot(routes),  AppRoutingModule,// TopNavModule, LeftNavModule, //FitWindowModule, 
     StorageServiceModule,
     HttpClientModule, BrowserAnimationsModule],

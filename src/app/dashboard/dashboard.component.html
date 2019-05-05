@@ -1,47 +1,63 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="background-color: magenta; color: white; width:100%;height:100%; display:flex; flex-direction:column; align-content: center">
-  <!-- w<sc-fit-window #fw> -->
-    <div name="TopMenu"
-      style="background-color:slategray; width:100%;display:flex; flex-direction:row;justify-content: center;">
-      <!-- <sc-top-nav></sc-top-nav> -->
-    </div>
-    <div name="wrapper" style="background-color:lightgray; width:100%; height: 100%;  display:flex;flex-direction: row">
-      <div name="leftNav" style="width: auto; display:inline-block;flex-direction: row">
-        <!-- <sc-left-nav [liftedStateSectionItems]="state.slice('sectionItems')" [liftedStateItems]="state.slice('items')"
-          [liftedStateHeight]="fw.state.slice('height')">
-        </sc-left-nav> -->
-      </div>
-      <div name="contentarea"
-        style="background-color:black; width:100%;height:100%;display: flex; justify-content: center; margin: 0 auto">
-        <div id="flex-column-container">
-          <div class="flex-item">
-            <app-pull-request-count></app-pull-request-count>
-          </div>
+<div class="grid-container" id="main">
+  <div class="grid-item">1</div>
+  <div class="grid-item">2</div>
+  <div class="grid-item header">
+    <app-pull-request-count></app-pull-request-count>
+  </div>
+  <div class="grid-item">3</div>
+  <div class="grid-item">4</div>
 
-          <div class="flex-item">
-            <div id="flex-row-container">
-              <div class="flex-item">
-                <app-top-developers></app-top-developers>
-              </div>
-              <div class="flex-item">
-                <app-top-repository></app-top-repository>
-              </div>
-              <div class="flex-item">
-                <!-- <div class="parent" [@slide]="activePane">
-                  <ng-content select="[leftPane]"> -->
-                    <app-dev-pull-details></app-dev-pull-details>
-                  <!-- </ng-content>
-                  <ng-content select="[rightPane]"></ng-content> -->
-                </div>
-              </div>
-            </div>
-          </div>
-      </div> <!-- Content Area-->
-      <!--router-outlet></router-outlet-->
-    </div> <!-- wrapper-->
-  <!-- </sc-fit-window> -->
-  <!-- <div name="Footer"
-    style="background-color: grey; width:100%;height:50px;display:flex; flex-direction:row;justify-content: center; vertical-align:autoks">
-    Footer
-  </div> -->
+  <div class="left-menu1-visible">
+    <app-org-list> </app-org-list>
+    <!-- <button id="m1-btn" class="menu1-button box-shadow" style="background-color:cornflowerblue">A</button>
+    <button id="m1-btn" class="menu1-button  box-shadow" style="background-color: yellow; color: black">B</button>
+    <button id="m1-btn" class="menu1-button  box-shadow" style="background-color:red">C</button>
+    <button id="m1-btn" class="menu1-button  box-shadow" style="background-color:rgb(42, 199, 42)">C</button>
+    <button id="m1-btn" class="menu1-button  box-shadow" style="background-color:magenta">C</button> -->
+  </div>
+  <div class="left-menu2-visible">
+    <!-- <button id="btn" class="non-collapse-button"></button> -->
+    <button id="btn" class="menu2-button" style="background-color: rgba(14, 14, 58, 0.788)"></button>
+    <button id="btn" class="menu2-button" style="background-color: rgb(86, 136, 194)"></button>
+    <button id="btn" class="menu2-button" style="background-color: red"></button>
+    <button id="btn" class="menu2-button" style="background-color: rgb(41, 138, 49)"></button>
+    <button id="btn" class="menu2-button" style="background-color: rgb(158, 37, 138)"></button>
+    <button id="btn" class="menu2-button" style="background-color:aqua"></button>
+  </div>
+  <div class="grid-item">
+    <div style="width: 100%; height: 100%;">
+      <app-top-developers></app-top-developers>
+    </div>
+  </div>
+  <div class="grid-item"><app-top-repository></app-top-repository></div>
+  <div class="grid-item"><app-dev-pull-details></app-dev-pull-details></div>
+  <div class="grid-item">9</div>
+  <div class="grid-item">
+    <button id="btn" class="menu2-button" style="background-color: gray">+</button>
+  </div>
+  <div class="grid-item">11</div>
+  <div class="grid-item">12</div>
+  <div class="grid-item">13</div>
 </div>
+
+<script>
+  function collapse() {
+    if ($('#main').attr('class') === 'grid-container') {
+      $('#main')
+        .removeClass('grid-container')
+        .addClass('grid-container-collapsed');
+      $('#btn').html('>');
+      $('#btn')
+        .removeClass('non-collapse-button')
+        .addClass('collapse-button');
+    } else {
+      $('#btn').html('<');
+      $('#main')
+        .removeClass('grid-container-collapsed')
+        .addClass('grid-container');
+      $('#btn')
+        .removeClass('collapse-button')
+        .addClass('non-collapse-button');
+    }
+  }
+</script>
