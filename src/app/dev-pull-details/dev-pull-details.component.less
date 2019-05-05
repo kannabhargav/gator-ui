@@ -1,21 +1,46 @@
 #flex-container {
     display: flex;
     flex-direction: column;
-    margin: 2px auto;
-    height:100%;
+    margin: 1px auto;
+    height: 800px;
     overflow: auto;
-    width: 100%;
-
+    scrollbar-base-color:  rgb(20, 20, 20);
     
 }
 
 .flex-item {
-    margin: 2px;
-    width: 500px;
+    margin: 1px;
+   
     height: auto;
     display: block;
     border-top: none;
     border-color: black;
     border-bottom-width: thin;
+    background-color: rgb(20, 20, 20);
   
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 15px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background:   rgb(36, 35, 35);
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(51, 51, 52); 
+    
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(51, 50, 50); 
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: rgba(0,0,0,0);
+  }

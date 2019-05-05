@@ -1,8 +1,8 @@
-<div id="flex-container">
+<div id="flex-container" style="width:500px">
   <a href="https://github.com/{{ devDetails[0].login }}" target="_blank" style="text-decoration: none;">
     <div div class="flex-item" style=" color:white">{{ devDetails[0].login }}</div>
   </a>
-  <div *ngFor="let dev of devDetails; let i = index" style="margin-bottom:25px" class="flex-item">
+  <div *ngFor="let dev of devDetails; let i = index" style="margin-bottom:3px" class="flex-item">
     <div style="font-size: large; color:greenyellow">{{ dev.Login }}</div>
     <div style="font-size: large; color:rgb(212, 212, 73)">{{ dev.State }}: {{ dev.Repo }}</div>
     <div style="font-size: large; color: honeydew ">{{ dev.title }}</div>

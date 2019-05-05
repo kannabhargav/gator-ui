@@ -1,16 +1,38 @@
 #flex-container {
     display: flex;
     flex-direction: column;
-   
-    margin: 5px auto;
     height:100%;
     width: 100%;
     overflow: auto;
-}
+   }
+
+/* width */
+::-webkit-scrollbar {
+    width: 15px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background:   rgb(36, 35, 35);
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(51, 51, 52); 
+    
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(51, 50, 50); 
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: rgba(0,0,0,0);
+  }
 
 .flex-item {
-    margin-left: 2px;
-    width: 90%;
+    margin: 5px;
     height: 50px;
     display: block;
     font-size: 20px; 

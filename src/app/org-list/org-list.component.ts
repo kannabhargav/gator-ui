@@ -10,8 +10,21 @@ import {GitService} from '../git-service';
 export class OrgListComponent implements OnInit {
 
   orgList: any[];
-  
-  constructor(private gitService: GitService, private router: Router) { }
+  back_colors: string[];
+  colors: string[];
+
+  constructor(private gitService: GitService, private router: Router) {
+    this.back_colors = [];
+    this.back_colors.push('blue'); this.back_colors.push ('yellow'); this.back_colors.push ('red');
+    this.back_colors.push ('magenta');
+    this.back_colors.push ('green');
+   
+    this.colors = [];
+    this.colors.push('white'); this.colors.push ('black'); this.colors.push ('white');
+    this.colors.push ('white');
+    this.colors.push ('white');
+    
+   }
 
   data(org: any) {
     this.gitService.currentOrg = org.Org;
@@ -25,6 +38,7 @@ export class OrgListComponent implements OnInit {
 
   ngOnInit() {
      this.gitService.GetOrgList ().subscribe ( result => {
+
         this.orgList = result ;
      })
   }

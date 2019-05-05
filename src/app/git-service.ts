@@ -128,15 +128,12 @@ export class GitService {
           this.GetOrgList().subscribe(result => {
           if (result.length > 0) {
             this.currentOrg = result[0].Org;
-            console.log('GetOrgList call was successfull:' + this.currentOrg);
             resolve();
           } else {
-            console.log('GetOrgList did not return anything');
             reject();
           }
         });
       } else {
-        console.log('Skipping call to GetOrgList, org is set to:' + this.currentOrg);
         resolve();  
       }
     });
