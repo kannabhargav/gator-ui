@@ -19,7 +19,7 @@ export class StatusComponent implements OnInit {
       if (result.length > 0) {
         this.orgStatus = true;
         this.orgList = result;
-        this.gitService.currentOrg = this.orgList[0].Org ;
+        this.gitService.currentOrg = this.orgList[0].Org;
 
         this.orgList.forEach(element => {
           this.gitService.GetHookStatus(element.Org).subscribe(result => {

@@ -12,10 +12,10 @@ import {Router, NavigationEnd} from '@angular/router';
 })
 export class TopRepositoryComponent implements OnInit {
   repositories: any[];
-  
+
   navigationSubscription: any;
 
-  constructor (private gitService: GitService, private router: Router) {
+  constructor(private gitService: GitService, private router: Router) {
     this.navigationSubscription = this.router.events.subscribe((e: any) => {
       // If it is a NavigationEnd event re-initalise the component
       if (e instanceof NavigationEnd) {
@@ -25,16 +25,16 @@ export class TopRepositoryComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    // avoid memory leaks here by cleaning up after ourselves. If we  
-    // don't then we will continue to run our initialiseInvites()   
+    // avoid memory leaks here by cleaning up after ourselves. If we
+    // don't then we will continue to run our initialiseInvites()
     // method on every navigationEnd event.
-    if (this.navigationSubscription) {  
-       this.navigationSubscription.unsubscribe();
+    if (this.navigationSubscription) {
+      this.navigationSubscription.unsubscribe();
     }
   }
 
-  initializeData () {
-    this.repositories =  [];
+  initializeData() {
+    this.repositories = [];
     this.gitService.Ready().then(result => {
       this.gitService.GetTopRepositories(this.gitService.currentOrg, 7).subscribe(val => {
         // Filter out the duplicates

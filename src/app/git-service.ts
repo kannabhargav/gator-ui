@@ -125,7 +125,7 @@ export class GitService {
     console.log('CheckOrg called');
     return new Promise((resolve, reject) => {
       if (this.currentOrg === undefined) {
-          this.GetOrgList().subscribe(result => {
+        this.GetOrgList().subscribe(result => {
           if (result.length > 0) {
             this.currentOrg = result[0].Org;
             resolve();
@@ -134,7 +134,7 @@ export class GitService {
           }
         });
       } else {
-        resolve();  
+        resolve();
       }
     });
   }

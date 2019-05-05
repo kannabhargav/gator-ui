@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { OrgListComponent } from './org-list.component';
+import {OrgListComponent} from './org-list.component';
 
 describe('OrgListComponent', () => {
   let component: OrgListComponent;
@@ -8,9 +8,8 @@ describe('OrgListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OrgListComponent ]
-    })
-    .compileComponents();
+      declarations: [OrgListComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

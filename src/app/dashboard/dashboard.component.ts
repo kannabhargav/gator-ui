@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 //import {StatefulComponent} from '@labshare/ngx-stateful';
 import {ChangeDetectorRef} from '@angular/core';
-import { animate, state, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectionStrategy, Input } from '@angular/core';
-
+import {animate, state, style, transition, trigger} from '@angular/animations';
+import {ChangeDetectionStrategy, Input} from '@angular/core';
 
 export const STATE = () => ({
   items: [{name: 'Team'}, {name: 'Repositories'}, {name: 'Developers'}],
@@ -11,11 +10,10 @@ export const STATE = () => ({
 });
 type PaneType = 'left' | 'right';
 
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.less']  // changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrls: ['./dashboard.component.less'], // changeDetection: ChangeDetectionStrategy.OnPush,
   // animations: [
   //   trigger('slide', [
   //     state('hide', style({ transform: 'translateX(-100%)' })),
@@ -24,15 +22,8 @@ type PaneType = 'left' | 'right';
   // ])]
 })
 export class DashboardComponent implements OnInit {
-
   orgs: any;
-  constructor() { 
-    
-  }
+  constructor() {}
 
-  ngOnInit() {
-    
-    
-  }
-
+  ngOnInit() {}
 }

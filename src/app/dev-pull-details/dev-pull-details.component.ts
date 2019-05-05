@@ -16,28 +16,25 @@ export class DevPullDetailsComponent implements OnInit {
   developer: string;
   navigationSubscription: any;
 
-  constructor(private gitService: GitService , private router: Router) {
-  
+  constructor(private gitService: GitService, private router: Router) {
     this.navigationSubscription = this.router.events.subscribe((e: any) => {
       // If it is a NavigationEnd event re-initalise the component
       if (e instanceof NavigationEnd) {
         this.initializeData();
       }
     });
-
   }
 
   ngOnDestroy() {
-    // avoid memory leaks here by cleaning up after ourselves. If we  
-    // don't then we will continue to run our initialiseInvites()   
+    // avoid memory leaks here by cleaning up after ourselves. If we
+    // don't then we will continue to run our initialiseInvites()
     // method on every navigationEnd event.
-    if (this.navigationSubscription) {  
-       this.navigationSubscription.unsubscribe();
+    if (this.navigationSubscription) {
+      this.navigationSubscription.unsubscribe();
     }
   }
 
-
-  initializeData () {
+  initializeData() {
     this.devDetails = [];
     this.developer = '';
     this.gitService.Ready().then(result => {
@@ -49,7 +46,6 @@ export class DevPullDetailsComponent implements OnInit {
       });
     });
   }
-
 
   getDeveloperDetails(developer: string) {
     this.gitService.Ready().then(result => {
@@ -84,5 +80,4 @@ export class DevPullDetailsComponent implements OnInit {
   ngOnInit() {
     this.initializeData();
   }
-
 }

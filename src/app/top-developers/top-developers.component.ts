@@ -30,25 +30,23 @@ export class TopDevelopersComponent implements OnInit {
         this.initializeData();
       }
     });
-
   }
 
   ngOnDestroy() {
-    // avoid memory leaks here by cleaning up after ourselves. If we  
-    // don't then we will continue to run our initialiseInvites()   
+    // avoid memory leaks here by cleaning up after ourselves. If we
+    // don't then we will continue to run our initialiseInvites()
     // method on every navigationEnd event.
-    if (this.navigationSubscription) {  
-       this.navigationSubscription.unsubscribe();
+    if (this.navigationSubscription) {
+      this.navigationSubscription.unsubscribe();
     }
   }
-
 
   data(developer: string) {
     this.gitService.trigger(developer);
     // this.messageEvent.emit (developer); Didn't work! Investigate
   }
 
-  initializeData () {
+  initializeData() {
     this.developers = [];
     this.avatar = [];
     this.gitService.Ready().then(result => {

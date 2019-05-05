@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 //import {StatefulComponent} from '@labshare/ngx-stateful';
 import {ChangeDetectorRef} from '@angular/core';
-import { animate, state, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectionStrategy, Input } from '@angular/core';
+import {animate, state, style, transition, trigger} from '@angular/animations';
+import {ChangeDetectionStrategy, Input} from '@angular/core';
 import {Router, RouterModule} from '@angular/router';
-import { CookieService } from 'angular2-cookie/services/cookies.service';
+import {CookieService} from 'angular2-cookie/services/cookies.service';
 
 export const STATE = () => ({
   items: [{name: 'Team'}, {name: 'Repositories'}, {name: 'Developers'}],
@@ -23,19 +23,14 @@ type PaneType = 'left' | 'right';
   //     transition('* => *', animate(300))
   // ])]
 })
+export class AppComponent implements OnInit {
+  // extends StatefulComponent {
 
-
-export class AppComponent implements OnInit { // extends StatefulComponent {
-    
-  
-  ngOnInit (){
-   
-  }
+  ngOnInit() {}
 
   @Input() activePane: PaneType = 'left';
   constructor(cdr: ChangeDetectorRef, private router: Router, private cookieService: CookieService) {
-  
-  //  super(cdr, STATE);
+    //  super(cdr, STATE);
   }
 
   title = 'Gator';
