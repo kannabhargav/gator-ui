@@ -19,11 +19,13 @@ export class PullRequestCountComponent implements OnInit {
   weekCloseCount: number = 0;
   navigationSubscription: any;
 
+
   constructor(private gitService: GitService, private router: Router) {
     this.count = 0;
     this.todayCount = 0;
     this.weekCount = 0;
     this.todayCloseCount = 0;
+   
 
     this.navigationSubscription = this.router.events.subscribe((e: any) => {
       // If it is a NavigationEnd event re-initalise the component

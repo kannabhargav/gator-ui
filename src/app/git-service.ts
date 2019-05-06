@@ -22,7 +22,7 @@ export class GitService {
 
   //Components listen to each other using this
   private _onMyEvent = new Subject<string>();
-  private _onOrgEvent = new Subject<string>();
+
 
   public get onMyEvent(): Observable<string> {
     return this._onMyEvent.asObservable();
@@ -42,11 +42,7 @@ export class GitService {
     this._onMyEvent.next(value);
   }
 
-  public orgTrigger(value: string) {
-    this._onOrgEvent.next(value);
-  }
-
-  constructor(private http: HttpClient, @Inject(LOCAL_STORAGE) private storage: WebStorageService, private router: Router) {
+   constructor(private http: HttpClient, @Inject(LOCAL_STORAGE) private storage: WebStorageService, private router: Router) {
     this.CheckOrg();
   }
 

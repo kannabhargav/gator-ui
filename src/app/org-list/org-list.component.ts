@@ -15,16 +15,16 @@ export class OrgListComponent implements OnInit {
   constructor(private gitService: GitService, private router: Router) {
     this.back_colors = [];
     this.back_colors.push('blue');
-    this.back_colors.push('yellow');
-    this.back_colors.push('red');
     this.back_colors.push('magenta');
+    this.back_colors.push('red');
+    this.back_colors.push('Yellow');
     this.back_colors.push('green');
 
     this.colors = [];
     this.colors.push('white');
+    this.colors.push('white');
+    this.colors.push('white');
     this.colors.push('black');
-    this.colors.push('white');
-    this.colors.push('white');
     this.colors.push('white');
   }
 
