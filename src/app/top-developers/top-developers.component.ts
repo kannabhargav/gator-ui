@@ -63,6 +63,6 @@ export class TopDevelopersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.initializeData();
+   
   }
 }

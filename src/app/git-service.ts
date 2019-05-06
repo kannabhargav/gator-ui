@@ -47,9 +47,7 @@ export class GitService {
   }
 
   constructor(private http: HttpClient, @Inject(LOCAL_STORAGE) private storage: WebStorageService, private router: Router) {
-    console.log('gitservice is created');
     this.CheckOrg();
-    console.log('==> org:' + this.currentOrg);
   }
 
   GetHookStatus(org: string): any {
@@ -112,17 +110,14 @@ export class GitService {
   }
 
   async Ready(): Promise<boolean> {
-    console.log('Ready called');
-    return new Promise(async (resolve, reject) => {
-      await this.CheckOrg().then(result => {
-        console.log('ready resolved - org:' + this.currentOrg);
-        resolve(true);
+    return new Promise( (resolve, reject) => {
+      this.CheckOrg().then(result => {
+          resolve(true);
       });
     });
   }
 
   async CheckOrg() {
-    console.log('CheckOrg called');
     return new Promise((resolve, reject) => {
       if (this.currentOrg === undefined) {
         this.GetOrgList().subscribe(result => {

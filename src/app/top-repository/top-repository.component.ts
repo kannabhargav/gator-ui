@@ -44,6 +44,6 @@ export class TopRepositoryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.initializeData();
+
   }
 }
