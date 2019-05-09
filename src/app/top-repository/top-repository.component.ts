@@ -43,7 +43,5 @@ export class TopRepositoryComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 }

@@ -1,27 +1,38 @@
 <div class="Aligner">
-
-  <div *ngIf="orgStatus" style=color:lightgreen>Getting organization list ... Done!
-    <div *ngFor= "let org of orgList">
-       <div> --> {{org.Org}}</div>
-    </div>
-  
+  <div> Please wait initializing your account .... First use will take time <br />
   </div>
-  <p></p>
-  <div *ngIf="!orgStatus" style="color:red">Error in getting organization list!</div>
 
-  <div *ngIf="repoStatus" style=color:lightgreen>Getting repo list ... Done!</div>
-  <p></p>
-  <div *ngIf="!repoStatus" style="color:red">Error in getting repo list!</div>
-  
-  <div *ngIf="prStatus" style=color:lightgreen>Getting pull request  ... Done!</div>
-  <p></p>
-  <div *ngIf="!prStatus" style="color:red">Error in getting pull request!</div>
+  <div *ngFor= "let message of messages">
+    <div style="color: greenyellow"> &#10004; {{message}}</div>
+ </div>
 
-  <div *ngIf="hookStatus" style=color:lightgreen>Git Hook is installed: {{hookStatus}}</div>
-  <p></p>
-  <div *ngIf="!hookStatus" style="color:red">Git Hook is installed: {{hookStatus}}</div>
-  <p></p>
+ <div *ngFor= "let message of errMessages">
+  <div style="color: red"> &#10006; {{message}}</div>
+</div>
+
+
+ <p></p>
     <div class="Aligner-item Aligner-item--fixed"> 
         <Button (click) = "dashboard()" class="buttonstyle"> Get Started  </Button>
     </div>
+</div>
+
+
+
+<div>
+
+  How to Manually Install web hook? <br /> <br />
+
+  You have to do this only if you get error in installing webhooks. <br />
+
+  Goto your organization page on the github <br />
+  Navigate to the "Settings" tab. <br />
+  Select the "Webhooks" option on the left menu. <br />
+  Click "Add Webhook" <br />
+  put 'https://gatorgithook.azurewebsites.net/api/httptrigger' in payload URL <br />
+  Select "application/json" as the encoding type. <br />
+  select radio button 'Let me select individual events.' <br />
+  check 'Pull requests' <br />
+  'click on Add webhook' <br />
+
 </div>

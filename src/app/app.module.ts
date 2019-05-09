@@ -21,6 +21,7 @@ import {LOCAL_STORAGE, StorageServiceModule} from 'angular-webstorage-service';
 import {StatusComponent} from './status/status.component';
 import {OrgListComponent} from './org-list/org-list.component';
 
+
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'dashboard', component: DashboardComponent},

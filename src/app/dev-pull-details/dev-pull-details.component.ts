@@ -49,7 +49,7 @@ export class DevPullDetailsComponent implements OnInit {
 
   getDeveloperDetails(developer: string) {
     this.gitService.Ready().then(result => {
-      this.gitService.GetDeveloperDetail(this.gitService.currentOrg, 7, developer, '', 20).subscribe(val => {
+      this.gitService.GetDeveloperDetail(this.gitService.currentOrg, 7, developer, '', 50).subscribe(val => {
         this.devDetails = val;
         this.devDetails.map(v => {
           let s = v.pullrequesturl;
@@ -65,7 +65,7 @@ export class DevPullDetailsComponent implements OnInit {
   //action => opened, closed
   getActionDetails(action: string, day: number) {
     this.gitService.Ready().then(result => {
-      this.gitService.GetDeveloperDetail(this.gitService.currentOrg, day, '', action, 20).subscribe(val => {
+      this.gitService.GetDeveloperDetail(this.gitService.currentOrg, day, '', action, 50).subscribe(val => {
         this.devDetails = val;
         this.devDetails.map(v => {
           let s = v.pullrequesturl;

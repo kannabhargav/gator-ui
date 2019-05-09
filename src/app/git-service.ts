@@ -1,4 +1,4 @@
-import {Injectable, Input, Inject} from '@angular/core';
+import {Injectable, Input, Inject, Optional, SkipSelf} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, of, Subject} from 'rxjs';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
@@ -23,7 +23,7 @@ export class GitService {
   //Components listen to each other using this
   private _onMyEvent = new Subject<string>();
 
-
+  //return the event as observable so others can subscribe to it
   public get onMyEvent(): Observable<string> {
     return this._onMyEvent.asObservable();
   }
@@ -42,38 +42,58 @@ export class GitService {
     this._onMyEvent.next(value);
   }
 
-   constructor(private http: HttpClient, @Inject(LOCAL_STORAGE) private storage: WebStorageService, private router: Router) {
+  constructor(private http: HttpClient, @Inject(LOCAL_STORAGE) private storage: WebStorageService, private router: Router, @Optional() @SkipSelf() parentmodule: GitService) {
+    if (parentmodule) {
+      throw new Error('GitService is already loaded. Import it in ONLY AppModule');
+    }
     this.CheckOrg();
   }
 
   GetHookStatus(org: string): any {
     this.AttachToken();
-    const q = `GetHookStatus?tenant=${this.tenant}&org=${org}`;
+    const q = `GetHookStatus?org=${org}`;
     return this.http.get(this.gitApiUrl + q, this.httpOptions);
   }
 
   SetupWebHook(org: string): any {
     this.AttachToken();
-    const q = `SetupWebHook?tenant=${this.tenant}&org=${org}`;
+    const q = `SetupWebHook?org=${org}`;
     return this.http.get(this.gitApiUrl + q, this.httpOptions);
   }
 
-  GetOrgList(): any {
+  GetOrgList():any {
     this.AttachToken(true);
     console.log('calling GetOrgList API');
-    const q = `GetOrg?tenant=${this.tenant}`;
+    const q = `GetOrg`;
     return this.http.get(this.gitApiUrl + q, this.httpOptions);
+    
+    // .subscribe (data => {
+    //   //{val: false, code: 404, message: "Auth Failed"}';
+    //   let decodedString = String.fromCharCode.apply(null, new Uint8Array(data));
+    //   let result = JSON.parse(decodedString);
+    //   if (result) {
+    //     if (result.code) {
+    //       if (result.code === 404) {
+    //         this.router.navigate(['/login']);
+    //       }
+    //     }
+    //   }
+    //   let oboo = new Subject<string>();
+    //   let oo = oboo.asObservable();
+    //   oboo.next(result);
+    //   return oo;
+    // });
   }
 
   GetRepoList(org: string): any {
     this.AttachToken();
-    const q = `GetRepos?tenant=${this.tenant}&org=${org}&bustTheCache=false&getFromGit=false`;
+    const q = `GetRepos?org=${org}&bustTheCache=false&getFromGit=false`;
     return this.http.get(this.gitApiUrl + q, this.httpOptions);
   }
 
   GetPullRequest(org: string): any {
     this.AttachToken();
-    const q = `GetPRfromGit?tenant=${this.tenant}&org=${org}`;
+    const q = `GetPRfromGit?org=${org}`;
     return this.http.get(this.gitApiUrl + q, this.httpOptions);
   }
 
@@ -106,9 +126,9 @@ export class GitService {
   }
 
   async Ready(): Promise<boolean> {
-    return new Promise( (resolve, reject) => {
+    return new Promise((resolve, reject) => {
       this.CheckOrg().then(result => {
-          resolve(true);
+        resolve(true);
       });
     });
   }
@@ -130,16 +150,16 @@ export class GitService {
     });
   }
 
-  GetDeveloperDetail(tenant: string, day: number = 7, login: string, Action: string, pageSize: number = 20): Observable<any> {
-    const q = `PullRequest4Dev?tenant=${tenant}&day=${day}&login=${login}&action=${Action}&pageSize=${pageSize}`;
+  GetDeveloperDetail(org: string, day: number = 7, login: string, Action: string, pageSize: number = 20): Observable<any> {
+    const q = `PullRequest4Dev?org=${org}&day=${day}&login=${login}&action=${Action}&pageSize=${pageSize}`;
     this.AttachToken();
     return this.http.get(this.gitApiUrl + q, this.httpOptions);
   }
 
   // GetPullRequestCount for last 7 days, 30 days etc
-  GetPullRequestCount(tenant: string, day: number = 7): Observable<any> {
+  GetPullRequestCount(org: string, day: number = 7): Observable<any> {
     this.AttachToken();
-    const q = `PullRequestCountForLastXDays?tenant=${tenant}&day=${day}`;
+    const q = `PullRequestCountForLastXDays?org=${org}&day=${day}`;
     return this.http.get(this.gitApiUrl + q, this.httpOptions);
   }
 
@@ -161,7 +181,7 @@ export class GitService {
   GetPullRequestForPastXDay(tenant: string, day: number): Observable<any> {
     this.AttachToken();
     // tslint:disable-next-line: max-line-length
-    const q = `PullRequestForLastXDays?tenant=${tenant}&day=${day}`;
+    const q = `PullRequestForLastXDays?day=${day}`;
     return this.http.get(this.gitApiUrl + q, this.httpOptions);
   }
 }

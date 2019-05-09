@@ -8,6 +8,7 @@
     "build:prod": "ng build --configuration=production",
     "test": "ng test",
     "e2e": "ng e2e",
+    "p": "npm run prettier:cli -- --write",
     "prettier:cli": "prettier \"**/*.ts\" \"**/*.js\" \"**/*.md\"",
     "prettier:check": "npm run prettier:cli -- -l",
     "prettier:fix": "npm run prettier:cli -- --write",

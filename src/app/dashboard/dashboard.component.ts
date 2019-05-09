@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-//import {StatefulComponent} from '@labshare/ngx-stateful';
+import {Component, OnInit, Inject} from '@angular/core';
 import {ChangeDetectorRef} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 import {ChangeDetectionStrategy, Input} from '@angular/core';
+import {Router, ActivatedRoute, Params} from '@angular/router';
 
 export const STATE = () => ({
   items: [{name: 'Team'}, {name: 'Repositories'}, {name: 'Developers'}],
@@ -23,7 +24,12 @@ type PaneType = 'left' | 'right';
 })
 export class DashboardComponent implements OnInit {
   orgs: any;
-  constructor() {}
+  constructor(private router: Router, @Inject(LOCAL_STORAGE) private storage: WebStorageService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    let token = this.storage.get('token');
+    if (!token) {
+      this.router.navigate(['/login']);
+    }
+  }
 }
