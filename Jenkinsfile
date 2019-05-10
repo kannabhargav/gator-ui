@@ -62,9 +62,7 @@ pipeline {
                     
                     // push build to Artifactory
                   
-                   dir('$workspace'){
-
-            pwd(); //Log current directory
+            
 
     
                   
@@ -76,7 +74,7 @@ pipeline {
                   
                   
                   
-                  }
+           
                   
                  //   withCredentials([string(credentialsId: 'ARTIFACTORY_USER', variable: 'ARTIFACTORY_USER'),
                //                 string(credentialsId: 'ARTIFACTORY_TOKEN', variable: 'ARTIFACTORY_TOKEN')]) {
