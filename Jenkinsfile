@@ -72,7 +72,7 @@ pipeline {
 
 
                 // Upload files from working directory 'dist' in your project workspace
-                s3Upload(bucket:"test-a-gator-api", workingDir:'./dist', includePathPattern:'**');
+                s3Upload(bucket:"test-a-gator-api", path:"./dist");
                   
                   
                   
