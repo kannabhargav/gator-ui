@@ -62,7 +62,7 @@ pipeline {
                     
                     // push build to Artifactory
                   
-                  withAWS(region:us-east-1',credentials:'aws-ci') {
+                  withAWS(region:'us-east-1',credentials:'aws-ci') {
 
                  def identity=awsIdentity();//Log AWS credentials
 
