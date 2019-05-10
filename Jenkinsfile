@@ -64,7 +64,9 @@ pipeline {
                   
             
                    
-    
+            dir('E:\Jenkins\workspace\CI\Gator\gator-ui'){
+
+            pwd(); 
                   
                   withAWS(region:'us-east-1',credentials:'aws-ci') {
 
@@ -74,7 +76,7 @@ pipeline {
                   
                   
                   
-           
+                  }
                   
                  //   withCredentials([string(credentialsId: 'ARTIFACTORY_USER', variable: 'ARTIFACTORY_USER'),
                //                 string(credentialsId: 'ARTIFACTORY_TOKEN', variable: 'ARTIFACTORY_TOKEN')]) {
