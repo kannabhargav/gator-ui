@@ -64,7 +64,7 @@ pipeline {
                   
             
                    
-            dir($workspace){
+            dir("$WORKSAPACE"){
 
             pwd(); 
                   
