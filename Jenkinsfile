@@ -61,10 +61,22 @@ pipeline {
                     bat "echo %cd% && dir"
                     
                     // push build to Artifactory
-                    withCredentials([string(credentialsId: 'ARTIFACTORY_USER', variable: 'ARTIFACTORY_USER'),
-                                string(credentialsId: 'ARTIFACTORY_TOKEN', variable: 'ARTIFACTORY_TOKEN')]) {
-                        bat "7z a -ttar -so gator-ui${BUILD_VERSION}.tar dist | 7z a -si gator-ui${BUILD_VERSION}.tar.gz"
-                        bat "c:/curl/bin/curl -u${ARTIFACTORY_USER}:${ARTIFACTORY_TOKEN} -T gator-ui${BUILD_VERSION}.tar.gz https://builds.aws.labshare.org/artifactory/labshare/gator-api/gator-ui${BUILD_VERSION}.tar.gz"
+                  
+                  withAWS(region:us-east-1',credentials:'aws-ci') {
+
+                 def identity=awsIdentity();//Log AWS credentials
+
+                // Upload files from working directory 'dist' in your project workspace
+                s3Upload(bucket:"a-gator-api", workingDir:'dist', includePathPattern:'**/*');
+                  
+                  
+                  
+                  
+                  
+                 //   withCredentials([string(credentialsId: 'ARTIFACTORY_USER', variable: 'ARTIFACTORY_USER'),
+               //                 string(credentialsId: 'ARTIFACTORY_TOKEN', variable: 'ARTIFACTORY_TOKEN')]) {
+             //           bat "7z a -ttar -so gator-ui${BUILD_VERSION}.tar dist | 7z a -si gator-ui${BUILD_VERSION}.tar.gz"
+             //           bat "c:/curl/bin/curl -u${ARTIFACTORY_USER}:${ARTIFACTORY_TOKEN} -T gator-ui${BUILD_VERSION}.tar.gz https://builds.aws.labshare.org/artifactory/labshare/gator-api/gator-ui${BUILD_VERSION}.tar.gz"
                     }
                 }
             }
