@@ -64,7 +64,7 @@ pipeline {
                   
             
                    
-            dir('E:\Jenkins\workspace\CI\Gator\gator-ui'){
+            dir($workspace){
 
             pwd(); 
                   
