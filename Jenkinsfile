@@ -64,7 +64,7 @@ pipeline {
                   
             
                    
-            dir("$WORKSAPACE"){
+           // dir("$WORKSAPACE"){
 
             pwd(); 
                   
@@ -76,7 +76,7 @@ pipeline {
                   
                   
                   
-                  }
+           //       }
                   
                  //   withCredentials([string(credentialsId: 'ARTIFACTORY_USER', variable: 'ARTIFACTORY_USER'),
                //                 string(credentialsId: 'ARTIFACTORY_TOKEN', variable: 'ARTIFACTORY_TOKEN')]) {
