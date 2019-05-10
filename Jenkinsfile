@@ -62,7 +62,7 @@ pipeline {
                     
                     // push build to Artifactory
                   
-                  withAWS(region:'us-east',credentials:'aws-ci') {
+                  withAWS(region:'us-east-1',credentials:'aws-ci') {
 
 
                 // Upload files from working directory 'dist' in your project workspace
