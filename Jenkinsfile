@@ -55,7 +55,7 @@ pipeline {
                     bat "npm i --quiet --cache=npm-cache"
 
                     bat """
-                    ng build \
+                    npm run build \
                     --npmCache=npm-cache
                     """
                     bat "echo %cd% && dir"
